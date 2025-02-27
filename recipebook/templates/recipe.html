@@ -11,10 +11,13 @@
     </h2>
 
     <ul>
-        {% for ingredient in object.ingredients.filter(recipe__recipe__name=Recipe.object.name) %}
+        {% for ingredient in object.ingredients.all %}
             <li>
-                {{ingredient.ingredient.name}} ({{ingredient.ingredient.quantity}})
+                {{ingredient.ingredientType.name}} ({{ingredient.quantity}})
             </li>
         {% endfor %}
     </ul>
+
+    <a href="{{object.get_absolute_url}}">{{"<--- Back to recipes list"}}</a>
+
 {% endblock %}
