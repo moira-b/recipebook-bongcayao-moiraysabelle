@@ -5,6 +5,7 @@ from .views import RecipeListView, RecipeDetailView
 urlpatterns = [
     path('recipe-list', RecipeListView.as_view(), name='recipe-list'),
     path('recipe/<int:pk>', RecipeDetailView.as_view(), name='recipe-details'),
+    path('', admin, name='admin')
     # path('', index, name='index'),
     # path('', recipesList, name='recipe-list'),
     # path('recipes/list', recipesList, name='recipe-list'),

@@ -5,11 +5,11 @@ from django.views.generic.detail import DetailView
 
 from .models import Ingredient, Recipe, RecipeIngredient
 
-def RecipeListView(ListView):
+class RecipeListView(ListView):
     model = Recipe
     template_name = "recipesList.html"
 
-def RecipeDetailView(DetailView):
+class RecipeDetailView(DetailView):
     model = Recipe
     template_name = "recipe.html"
 

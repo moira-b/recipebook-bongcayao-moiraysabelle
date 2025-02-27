@@ -11,9 +11,9 @@
     </h2>
 
     <ul>
-        {% for ingredient in Recipe.object.ingredients.filter(recipe__recipe__name=Recipe.object.name) %}
+        {% for ingredient in object.ingredients.filter(recipe__recipe__name=Recipe.object.name) %}
             <li>
-                {{ingredient.ingredientType}} ({{ingredient.quantity}})
+                {{ingredient.ingredient.name}} ({{ingredient.ingredient.quantity}})
             </li>
         {% endfor %}
     </ul>
