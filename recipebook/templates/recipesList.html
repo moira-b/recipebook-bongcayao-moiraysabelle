@@ -7,9 +7,9 @@
         Recipe Book
     </h1>
     <ul>
-        {% for recipe in recipes %}
+        {% for recipe in object_list %}
             <li>
-                <a href="{{recipe.link}}">{{recipe.name}}</a>
+                <a href="{{recipe.get_asolute_url}}">{{recipe.name}}</a>
             </li>
         {% endfor %}
     </ul>

@@ -17,5 +17,9 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     quantity = models.DecimalField(decimal_places=2, max_digits = 10) # real-life recipes will generally not need to exceed these parameters
-    ingredientType = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='recipe')
-    inRecipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
+    ingredientType = models.ForeignKey(Ingredient, 
+                                       on_delete=models.CASCADE, 
+                                       related_name='recipe')
+    inRecipe = models.ForeignKey(Recipe, 
+                                 on_delete=models.CASCADE, 
+                                 related_name='ingredients')
