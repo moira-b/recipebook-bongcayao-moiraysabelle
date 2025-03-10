@@ -4,10 +4,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}Default Title{% endblock %}</title>
         {% block styles %}
+            <style>
+                body {
+                   font-family:Verdana, sans-serif;
+                   margin: 2%;
+                }
+            </style>
         {% endblock %}
     </head>
-    
     <body>
-       {% block content %}
-       {% endblock %}
+        <span style="text-align: left; width:69%;  display: inline-block; vertical-align: top;">
+            <h1> 
+                Recipe Book
+            </h1>
+        </span>
+        <span style="text-align: right; width:30%;  display: inline-block; vertical-align: top;">
+            {% if user.is_authenticated %}
+                <button type="submit">
+                    <p><a href="{% url 'login' %}">Logout</a></p>
+                </button>
+            {% else %}
+                <button type="submit">
+                    <p><a href="{% url 'login' %}">Login</a></p>
+                </button>
+            {% endif %}
+        </span>
+        <hr>
+        <h2>{% block subheading %} {% endblock %}</h2>
+        {% block content %}
+        {% endblock %}
     </body>
+</html>

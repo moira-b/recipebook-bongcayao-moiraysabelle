@@ -23,9 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!x
-SECRET_KEY = "$=@65ez7&ih2z_$8cp+al-qnutauw1im-%=s*=@@&ck7#*da8!"
-# SECRET_KEY = os.getenv('SECRET_KEY')
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ledger',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +121,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
+LOGIN_REDIRECT_URL = '/recipes/list'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
