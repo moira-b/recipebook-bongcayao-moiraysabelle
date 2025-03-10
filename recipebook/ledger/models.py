@@ -14,6 +14,12 @@ class Recipe(models.Model):
         return str(self.name)
     def get_absolute_url(self):
         return reverse('ledger:recipe',args=[str(self.pk)])
+    
+    author = models.CharField
+
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    updated_on = models.DateTimeField(audo_add=True)
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=50)
