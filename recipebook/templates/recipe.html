@@ -10,9 +10,10 @@
 
 <p>
     Created on: {{ object.created_on }}
-    Updated on: {{ object.updated_on }}
+    <br> Updated on: {{ object.updated_on }}
 </p>
 
+<b>Ingredients:</b>
 <ul>
     {% for ingredient in object.ingredients.all %}
     <li>
@@ -21,6 +22,7 @@
     {% endfor %}
 </ul>
 
+<br><br><br>
 <button type="submit">
     <p><a href="{% url 'ledger:recipe-list' %}">Back to recipe list</a></p>
 </button>
