@@ -4,20 +4,25 @@
 
 {% block content %}
 
-    <p>
-        Written by {{object.author}}
-    </p>
+<p>
+    Written by {{object.author}}
+</p>
 
-    <ul>
-        {% for ingredient in object.ingredients.all %}
-            <li>
-                {{ingredient.ingredientType.name}} ({{ingredient.quantity}})
-            </li>
-        {% endfor %}
-    </ul>
+<p>
+    Created on: {{ object.created_on }}
+    Updated on: {{ object.updated_on }}
+</p>
 
-    <button type="submit">
-        <p><a href="{% url 'ledger:recipe-list' %}">Back to recipe list</a></p>
-    </button>
+<ul>
+    {% for ingredient in object.ingredients.all %}
+    <li>
+        {{ ingredient.ingredient_Type.name }} ({{ ingredient.quantity }})
+    </li>
+    {% endfor %}
+</ul>
+
+<button type="submit">
+    <p><a href="{% url 'ledger:recipe-list' %}">Back to recipe list</a></p>
+</button>
 
 {% endblock %}
