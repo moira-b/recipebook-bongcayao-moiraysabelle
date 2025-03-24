@@ -22,7 +22,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     template_name = 'recipeForm.html'
     form_class = RecipeForm
 
-class RecipeImageCreateView(CreateView):
+class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     template_name = 'recipeImageUpload.html'
     form_class = AddImageForm
@@ -31,7 +31,7 @@ class RecipeImageCreateView(CreateView):
         pk = self.kwargs['pk']
         ctx = super().get_context_data(**kwargs)
         ctx['form'] = AddImageForm()
-        ctx['image_in_Recipe'] = Recipe.objects.get(pk=pk)
+        ctx['belongs_to_recipe'] = Recipe.objects.get(pk=pk)
         return ctx
     
     def post(self, request, *args, **kwargs):
@@ -40,7 +40,13 @@ class RecipeImageCreateView(CreateView):
         if form.is_valid():
             ri = RecipeImage()
             ri.image = request.FILES.get('image')
-            ri.image_in_Recipe = Recipe.objects.get(pk=pk)
+            ri.belongs_to_recipe = Recipe.objects.get(pk=pk)
             ri.save()
 
             return redirect(reverse('ledger:recipe', args=[pk]))
+        
+        else:
+            self.object_list = self.get_queryset(**kwargs)
+            context = self.get_context_data(**kwargs)
+            context['form'] = form
+            return self.render_to_response(context)

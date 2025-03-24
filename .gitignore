@@ -8,3 +8,6 @@ db.sqlite3
 
 # pycache files #
 __pycache__
+
+# media files #
+media/
