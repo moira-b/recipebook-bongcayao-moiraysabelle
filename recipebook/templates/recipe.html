@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block subheading %} {{object.name}} Recipe {% endblock %}
 
 {% block content %}
+
+<a href="{% url 'ledger:image-upload' pk=object.pk %}">Upload an image</a>
+
+{% if object.images %}
+    {% for image in object.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+    {% endfor %}
+{% endif %}
 
 <p>
     Written by {{object.author}}
 </p>
 
 <p>
-    Created on: {{ object.created_on }}
-    <br> Updated on: {{ object.updated_on }}
+    Created on: {{ object.created_on }} <br> 
+    Updated on: {{ object.updated_on }}
 </p>
 
 <b>Ingredients:</b>
@@ -21,6 +29,7 @@
     </li>
     {% endfor %}
 </ul>
+
 
 <br><br><br>
 <button type="submit">

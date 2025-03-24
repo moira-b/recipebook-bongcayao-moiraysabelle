@@ -3,6 +3,7 @@
 {% block subheading %} Recipe List {% endblock %}
 
 {% block content %}
+
 <ul>
     {% for recipe in object_list %}
     <li>
@@ -10,4 +11,8 @@
     </li>
     {% endfor %}
 </ul>
+
+<br><br>
+<a href="{% url 'ledger:recipe-creation' %}"> Create a New Recipe </a>
+
 {% endblock %}
